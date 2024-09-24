@@ -52,7 +52,7 @@ export async function handleSignUp({ name, email, password, confirmPassword }: {
         }
 
         // check if the email is already taken
-        const existingUser = await prisma.user.findUnique({
+        const existingUser = await prisma.user.findUnique({ 
             where: {
                 email,
             },
@@ -78,3 +78,10 @@ export async function handleSignUp({ name, email, password, confirmPassword }: {
         return { success: false, message: "An unexpected error occurred. Please try again." };
     }
 }
+
+
+export async function  deleteUser(id: string) {await prisma.book.delete({
+    where: {
+      id: id,
+    },
+  })}
