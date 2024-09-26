@@ -79,9 +79,3 @@ export async function handleSignUp({ name, email, password, confirmPassword }: {
     }
 }
 
-
-export async function  deleteUser(id: string) {await prisma.book.delete({
-    where: {
-      id: id,
-    },
-  })}
