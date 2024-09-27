@@ -16,7 +16,7 @@ const page = async () => {
 
         <h1 className="text-4xl font-semibold"> Our Books </h1>
 
-        <form action={createBook} className='flex gap-4'>
+        <form action={createBook} className='flex gap-4' method='post'>
             <input 
                 type="text" 
                 name='title'
@@ -36,7 +36,7 @@ const page = async () => {
                 className='px-2 py-1 rounded-sm border border-black'
             />
             <button 
-                type='submit' 
+                type="submit" 
                 className='bg-black text-white px-3 py-2 rounded-sm'
             > 
                 Add book
