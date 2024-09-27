@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import prisma from '@/lib/prisma'
 import React from 'react'
-import { createBook } from '../actions/bookactions'
+import { createBook, deleteBook } from '../actions/bookactions'
 
 
 
@@ -55,7 +55,7 @@ const page = async () => {
                     Genre: {book.genre} <br />
                     author: {book.author}
                     <div className='buttons flex gap-4 my-4'>
-                        <Button children="Delete"/>
+                        <Button children="Delete" />
                         <Button children="Edit"/>
                     </div>
                 </CardContent>
