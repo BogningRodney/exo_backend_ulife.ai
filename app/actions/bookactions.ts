@@ -1,17 +1,18 @@
-"use server"
+"use server";
 
-import prisma from "@/lib/prisma";
+import { auth } from "@/auth";
+import { createBookController } from "@/src/interface-adapters/controllers/books/create-book.controller";
+import { deleteBookController } from "@/src/interface-adapters/controllers/books/delete-book.controller";
+import { redirect } from "next/navigation";
 
-export async function createBook(formData: FormData){
-    await prisma.book.create({
-        data: {
-            title: formData.get('title') as string,
-            genre: formData.get('genre') as string,
-            author: formData.get('author') as string
-        }
-    })
+export async function createBook(formData: FormData) {
+  const session = await auth();
+
+  const data = Object.fromEntries(formData.entries());
+  await createBookController(data, session?.user?.email);
 }
 
 export async function deleteBook(id: string) {
-    await prisma.book.delete({where: { id }})
+  await deleteBookController(id);
+  redirect("/book");
 }
